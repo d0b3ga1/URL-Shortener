@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}All Submissions{% endblock %}
+{% block content %}
+<div style="padding-top: 10%">
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>HITS</th>
+            <th>Created at</th>
+        </tr>
+        {% for item in stats %}
+        <tr>
+            <td><a href="http://localhost:5000/{{ item[0] }}">
+                    <font color="blue"> {{item[0]}}
+                    </font>
+                </a></td>
+            <td>{{ item[1] | truncate(68) }}</a></td>
+            <td>{{ item[2] }}</a></td>
+            <td>{{ item[3] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+<div class="container">
+    <div class="col-xs-12 text-center">
+        <p style="color:gray">
+            {% if prev_num %}
+            <a href="{{ prev_num }}">&lt;&lt; Newer </a>
+            {% else %}
+            &lt;&lt; Newer
+            {% endif %}
+
+            {% if next_num %}
+            <a href="{{ next_num }}">Older &gt;&gt;</a>
+            {% else %}
+            Older &gt;&gt;
+            {% endif %}
+        </p>
+    </div>
+</div>
+{% endblock %}
