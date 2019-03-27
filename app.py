@@ -33,7 +33,7 @@ db_path = os.path.join(BASE_DIR, "urls.db")
 
 app = Flask(__name__)
 app.debug = True
-host = 'http://localhost:5000/'
+host = 'http://68.183.202.187:5000/'
 
 def table_check():
     ''' Kiểm tra và tạo database nếu chưa tồn tại
