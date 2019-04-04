@@ -8,30 +8,57 @@
   <title>{% block title %}{% endblock %} | Simple Shortener</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" type="text/css">
+  <style>
+    body,
+    h1 {
+      font-family: "Raleway", sans-serif
+    }
+
+    body,
+    html {
+      height: 100%
+    }
+
+    .bgimg {
+      background-image: url('https://previews.123rf.com/images/gonin/gonin1706/gonin170600155/80268109-digital-data-hex-code-symbols-abstract-information-technology-background-computer-generated-raster-i.jpg');
+      min-height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+
 </head>
 
 <body>
 
-  <div class="container col-md-6 col-md-offset-6">
-    <h1 style="text-align:left;">
-      <a id="links" href="{{ url_for('home') }}">Simple Shortener</a>
-      <span style="float:right;"><a id="links" href="{{ url_for('stats') }}"> Stats </a></span>
-    </h1>
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+      <a id="links" class="w3-bar-item w3-button" href="{{ url_for('home') }}"><b>Simple Shortener</b></a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a id="links" class="w3-bar-item w3-button" href="{{ url_for('stats') }}"> Stats </a>
+      </div>
+    </div>
+  </div>
 
-    {% block content %}
 
-    {% endblock %}
+
+  {% block content %}
+
+  {% endblock %}
 
   </div>
 
-  <div class="container col-md-6 col-md-offset-6">
-    <footer>
-      <p>Made with <font color="red">
-          <3 </font> by proteamno1 </a>for CSE393 at <font color='blue'>TLU</font></p>
-    </footer>
-  </div>
-
-</body>
-
-</html>
+  <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p>Powered by <a href="h###" target="_blank" class="w3-hover-text-green">Team kut3_pro_no1 <3</a> </p> </footer>
+          </body> </html>

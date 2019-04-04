@@ -1,32 +1,35 @@
 {% extends 'base.html' %}
 {% block title %}All Submissions{% endblock %}
 {% block content %}
-<div style="padding-top: 10%">
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-middle">
+    <div class="container col-md-6 col-md-offset-6">
+      <div style="padding-top: 40%">
 
-    <table class="table">
-        <tr>
+        <table class="table">
+          <tr>
             <th>ID</th>
             <th>URL</th>
             <th>HITS</th>
             <th>Created at</th>
-        </tr>
-        {% for item in stats %}
-        <tr>
-            <td><a href="http://68.183.202.187:5000/{{ item[0] }}">
-                    <font color="blue"> {{item[0]}}
-                    </font>
-                </a></td>
+          </tr>
+          {% for item in stats %}
+          <tr>
+            <td><a href="http://localhost:5000/{{ item[0] }}">
+                <font color="blue"> {{item[0]}}
+                </font>
+              </a></td>
             <td>{{ item[1] | truncate(68) }}</a></td>
             <td>{{ item[2] }}</a></td>
             <td>{{ item[3] }}</td>
-        </tr>
-        {% endfor %}
+          </tr>
+          {% endfor %}
 
-    </table>
-</div>
-<div class="container">
-    <div class="col-xs-12 text-center">
-        <p style="color:gray">
+        </table>
+      </div>
+      <div class="container">
+        <div class="col-xs-12 text-center">
+          <p style="color:white">
             {% if prev_num %}
             <a href="{{ prev_num }}">&lt;&lt; Newer </a>
             {% else %}
@@ -38,7 +41,10 @@
             {% else %}
             Older &gt;&gt;
             {% endif %}
-        </p>
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}
