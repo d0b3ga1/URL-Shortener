@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" type="text/css">
@@ -18,176 +20,195 @@
 
 <body>
 
-  
-  	<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
       <a id="links" class="w3-bar-item w3-button" href="{{ url_for('home') }}"><b>Simple Shortener</b></a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a id="links" class="w3-bar-item w3-button" href="{{ url_for('stats') }}"> Stats </a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a id="links" class="w3-bar-item w3-button" href="{{ url_for('stats') }}"> Stats </a>
+      </div>
     </div>
   </div>
-</div>
-<header class="w3-display-container w3-content w3-wide" style="max-width:100%;" id="home">
-  <img class="w3-image" src="https://i.ytimg.com/vi/aDB4sbayssc/maxresdefault.jpg" alt="Architecture" width="2000" height="800">
-<div class="w3-display-middle w3-margin-top w3-center">
- 
-    {% if not short_url %}
-    <div id="url-bar">
-      <h3 style="text-align: left;color:black;"> Shorten your URL, not your life</h3>
-      <form action="{{ url_for('home') }}" class="form" method="post">
+  <header class="w3-display-container w3-content w3-wide" style="max-width:100%;" id="home">
+    <img class="w3-image"
+      src="http://www.technocrazed.com/wp-content/uploads/2015/12/black-wallpaper-to-set-as-background-28.jpg"
+      alt="Architecture" width="2000" height="800">
+    <div class="w3-display-middle w3-margin-top w3-center">
+
+      {% if not short_url %}
+      <div id="url-bar">
+        <h3 style="text-align: left;color:white;"> Shorten your URL, not your life</h3>
+        <form action="{{ url_for('home') }}" class="form" method="post">
+          <div class="input-group">
+            <label class="control-label" for="old"></label>
+            <input id="old" name="old" placeholder=" Enter full URL" required type="text" value="">
+            <button type="submit" class="btn btn-primary" style="border-radius: 0;">Shorten URL &raquo;</button>
+          </div>
+        </form>
+      </div>
+      {% else %}
+      <div id="url-bar">
+        <h3> Your URL was successfully shortened!</h3>
         <div class="input-group">
-          <label class="control-label" for="old"></label>
-          <input id="old" name="old" placeholder=" Enter full URL" required type="text" value="">
-          <button type="submit" class="btn btn-primary"  style="border-radius: 0;">Shorten URL &raquo;</button>
-        </div>
-      </form>
-    </div>
-    {% else %}
-    <div id="url-bar">
-      <h3> Your URL was successfully shortened!</h3>
-      <div class="input-group">
-        <span class="input-group-btn">
-          <!-- <a class='btn btn-primary copy-link' style="color: aqua; border-radius: 0;"
+          <span class="input-group-btn">
+            <!-- <a class='btn btn-primary copy-link' style="color: aqua; border-radius: 0;"
             data-clipboard-text='{{ url_for('home', _external=True) }}'>Copy</a> -->
-          <button class='btn btn-primary copy-link' data-clipboard-target="#myInput" style="color: aqua; border-radius: 0;">Copy</button>
-        </span>
-        <input style="border-radius: 0;" class='form-control' type='text' value='{{short_url}}' id="myInput" />
+            <button class='btn btn-primary copy-link' data-clipboard-target="#myInput"
+              style="color: aqua; border-radius: 0;">Copy</button>
+          </span>
+          <input style="border-radius: 0;" class='form-control' type='text' value='{{short_url}}' id="myInput" />
+        </div>
+        <div class="col-xs-12" id="redirect"> Redirects to: {{ old }}</div>
       </div>
-      <div class="col-xs-12" id="redirect"> Redirects to: {{ old }}</div>
+      {% endif %}
     </div>
-    {% endif %}
-  </div>
-</div>
-</header>
-<br>
-<br>
-<br>
+    </div>
+  </header>
+  <br>
+  <br>
+  <br>
 
- <div class="w3-container w3-padding-64 w3-light-grey w3-grayscale-min w3-center" id="wedding">
-  <div class="w3-content">
-    <h1 class="w3-text-grey"><b>Tính năng</b></h1>
-    <br>
-    <br>
-    <div class="w3-row">
-      <div class="w3-half">
-        <h2> Rút gọn dường link của bạn !</h2>
-        <p>Wedding Ceremony - 2:00pm</p>
-        <p>Reception & Dinner - 5:00pm</p>
+  <div class="w3-container w3-padding-64 w3-light-grey w3-grayscale-min w3-center" id="wedding">
+    <div class="w3-content">
+      <h1 class="w3-text-grey"><b>Tính năng</b></h1>
+      <br>
+      <br>
+      <div class="w3-row">
+        <div class="w3-half">
+          <h2> Rút gọn dường link của bạn !</h2>
+          <br>
+          <br>
+          <i class="fas fa-compact-disc" style="font-size: 400%"></i>
+        </div>
+        <div class="w3-half">
+          <h2>Lưu lại ID của đường link </h2>
+          <br>
+          <br>
+          <i class="fas fa-save" style="font-size: 400%"></i>
+        </div>
       </div>
-      <div class="w3-half">
-        <h2>Lưu lại ID của đường link </h2>
-        <p>Some place, an address</p>
-        <p>Some where, some address</p>
+    </div>
+  </div>
+
+  <div class="w3-content w3-padding" style="max-width:1564px">
+
+    <!-- Project Section -->
+
+
+    <!-- About Section -->
+    <div class="w3-container w3-padding-32" id="about">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Về trang web của chúng tôi</h3>
+      <p>Dịch vụ rút gọn link ngày càng được sử dụng nhiều và phát triển nhanh do nhu cầu cũng như tính chất của công
+        việc mà nó đem lại. Bằng cách rút gọn link nhiều người có thể thấy rõ sự tiện lợi của nó khi từ một đường link
+        dài và phức tạp, các bạn có thể rút gọn lại trông dễ nhìn hơn và tiện lợi cho việc chia sẻ cùng bạn bè.Vì vậy
+        chúng tôi tao ra trang web này để mang đến cho người dùng dịch vụ rút gọn đường link tốt nhất!
+      </p>
+    </div>
+
+    <div class="w3-row-padding w3-grayscale">
+      <div class="w3-col l1 m6 w3-margin-bottom">
+      </div>
+      <div class="w3-col l2 m6 w3-margin-bottom">
+        <img
+          src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/40085230_1041546796024858_1639991257197445120_n.jpg?_nc_cat=101&_nc_oc=AQlKE9HPyui26oHnZe44MirCQ5tNwovKnE293I1W9A-1Ql05UKt7XjdejOd_yP5zxSE&_nc_ht=scontent-hkg3-1.xx&oh=25792a75cf2fff1a230c6758de209cbd&oe=5D425D41"
+          alt="Hưng" style="width:100%">
+        <h3>Phạm Việt Hưng</h3>
+        <p class="w3-opacity">Leader & Backend dev</p>
+        <p>Phụ trách làm backend của trang web và cloud server</p>
+        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+      </div>
+      <div class="w3-col l2 m6 w3-margin-bottom">
+        <img
+          src="https://scontent.fhan2-3.fna.fbcdn.net/v/t1.0-9/42617832_1992608637703997_5469521575919222784_n.jpg?_nc_cat=107&_nc_oc=AQljVh0M6GykRpdXTLdmmmjl86AlTRd26M8OFje7Acp7sGjl2HxWBBJqWk_JW1FJetU&_nc_ht=scontent.fhan2-3.fna&oh=748cff7c7a1dc98fe6f1080e49bb87f3&oe=5D08E72F"
+          alt="Tâm" style="width:100%">
+        <h3>Trần Minh Tâm</h3>
+        <p class="w3-opacity">Backend dev</p>
+        <p>Phụ trách làm backend và cloud server</p>
+        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+      </div>
+      <div class="w3-col l2 m6 w3-margin-bottom">
+        <img
+          src="https://scontent.fhan5-5.fna.fbcdn.net/v/t1.0-9/48377066_1419485688181350_2382355068453126144_n.jpg?_nc_cat=108&_nc_oc=AQl4j97ucmAtyZ36nEyPjXPGYxHXY-C4zyxXYF2gN442p1croPu3_25_AQU1Sm_4vRY&_nc_ht=scontent.fhan5-5.fna&oh=4f35c05c453ca06ae472b908d64aae29&oe=5D0EFF03"
+          style="width:100%">
+        <h3>Đặng Thế Anh</h3>
+        <p class="w3-opacity">Fontend dev</p>
+        <p>Phụ trách phần font end và các gui của trang web</p>
+        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+      </div>
+      <div class="w3-col l2 m6 w3-margin-bottom">
+        <img
+          src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/24301350_710149882513253_7809152258669374853_n.jpg?_nc_cat=101&_nc_oc=AQm6OMsAGC9N8fD5fAS0LDUd9KNs6_odJBFU3DRVjXxuLd1b2iBzz2v4tzztygcQ5Q0&_nc_ht=scontent.fhan2-1.fna&oh=7c4c24fbe029523986fe42ec557f70bc&oe=5D0A07F1"
+          alt="Hiếu" style="width:100%" height="">
+        <h3>Nguyễn Minh Hiếu</h3>
+        <p class="w3-opacity">Fontend dev</p>
+        <p>Phụ trách fontend của trang web</p>
+        <br>
+        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+      </div>
+      <div class="w3-col l2 m6 w3-margin-bottom">
+        <img
+          src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-1/56816014_1015473945320537_1686858490087211008_n.jpg?_nc_cat=101&_nc_oc=AQkta4QXQW5cVTmldgvwOzNhIGf-vUjUCN7PT6Abj_5k2SRK5vwXiDBZoxWewEP3cgM&_nc_ht=scontent-hkg3-1.xx&oh=b1e6f0e78fed61fdb97d6b962de2fce6&oe=5D43B201"
+          alt="Anh" style="width:100%">
+        <h3>Nguyễn Nhật Ánh</h3>
+        <p class="w3-opacity">Frontend dev</p>
+        <p>Phụ trách làm fontend của trang</p>
+        <br>
+        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+      </div>
+      <div class="w3-col l1 m6 w3-margin-bottom">
       </div>
     </div>
+
+    <!-- Contact Section -->
+
+
+    <!-- Image of location/map -->
+    <div class="w3-container">
+      <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
+    </div>
+
+    <!-- End page content -->
   </div>
-</div>
+  <br>
+  <br>
+  <br>
+  <br>
 
-<div class="w3-content w3-padding" style="max-width:1564px">
+  <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large">
+    <i class="fab fa-facebook w3-hover-opacity"></i>
+    <i class="fab fa-instagram w3-hover-opacity"></i>
+    <i class="fab fa-snapchat-square w3-hover-opacity"></i>
+    <i class="fab fa-pinterest-square w3-hover-opacity"></i>
+    <i class="fab fa-twitter-square w3-hover-opacity"></i>
+    <i class="fab fa-linkedin w3-hover-opacity"></i>
+    <p>Powered by <a href="h###" target="_blank" class="w3-hover-text-green">Team kut3_pro_no1 <3</a> </p> </footer>
+          <script>
+          $(document).ready(function(){
+          var clipboard = new Clipboard('.copy-link');
+          clipboard.on('success', function (e) {
+          console.log(e);
+          });
+          clipboard.on('error', function (e) {
+          console.log(e);
+          });
 
-  <!-- Project Section -->
- 
+          $(".copy-link").click(function (e) {
+          e.preventDefault();
+          var btnHref = $(this).attr('href')
+          var item = $(this)
+          item.text("Copied!")
+          item.removeClass('btn-primary')
+          item.addClass('btn-success')
 
-  <!-- About Section -->
-  <div class="w3-container w3-padding-32" id="about">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Về trang web của chúng tôi</h3>
-    <p>Dịch vụ rút gọn link ngày càng được sử dụng nhiều và phát triển nhanh do nhu cầu cũng như tính chất của công việc mà nó đem lại. Bằng cách rút gọn link nhiều người có thể thấy rõ sự tiện lợi của nó khi từ một đường link dài và phức tạp, các bạn có thể rút gọn lại trông dễ nhìn hơn và tiện lợi cho việc chia sẻ cùng bạn bè.Vì vậy chúng tôi tao ra trang web này để mang đến cho người dùng dịch vụ rút gọn đường link tốt nhất!
-    </p>
-  </div>
-
-  <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col l2 m6 w3-margin-bottom">
-      <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/19149126_711088202427870_283217848372184893_n.jpg?_nc_cat=101&_nc_oc=AQl5J8RUB5O7PmatVE_juGTT-PTx4fp3Me88EdWS8mzvLy70VxvELcGlWtYlLiaZBX8&_nc_ht=scontent.fhan2-1.fna&oh=b6ada402b7b83fa4977f30fcbe0cd8b3&oe=5D08BFE4" alt="Hưng" style="width:100%">
-      <h3>Phạm Việt Hưng</h3>
-      <p class="w3-opacity">Leader & Backend dev</p>
-      <p>Phụ trách làm backend của trang web và cloud server</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l2 m6 w3-margin-bottom">
-      <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t1.0-9/42617832_1992608637703997_5469521575919222784_n.jpg?_nc_cat=107&_nc_oc=AQljVh0M6GykRpdXTLdmmmjl86AlTRd26M8OFje7Acp7sGjl2HxWBBJqWk_JW1FJetU&_nc_ht=scontent.fhan2-3.fna&oh=748cff7c7a1dc98fe6f1080e49bb87f3&oe=5D08E72F" alt="Tâm" style="width:100%">
-      <h3>Trần Minh Tâm</h3>
-      <p class="w3-opacity">Backend dev</p>
-      <p>Phụ trách làm backend và cloud server</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l2 m6 w3-margin-bottom">
-      <img src="https://scontent.fhan5-5.fna.fbcdn.net/v/t1.0-9/48377066_1419485688181350_2382355068453126144_n.jpg?_nc_cat=108&_nc_oc=AQl4j97ucmAtyZ36nEyPjXPGYxHXY-C4zyxXYF2gN442p1croPu3_25_AQU1Sm_4vRY&_nc_ht=scontent.fhan5-5.fna&oh=4f35c05c453ca06ae472b908d64aae29&oe=5D0EFF03" style="width:100%">
-      <h3>Đặng Thế Anh</h3>
-      <p class="w3-opacity">Fontend dev</p>
-      <p>Phụ trách phần font end và các gui của trang web</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l2 m6 w3-margin-bottom">
-      <img src="https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/24301350_710149882513253_7809152258669374853_n.jpg?_nc_cat=101&_nc_oc=AQm6OMsAGC9N8fD5fAS0LDUd9KNs6_odJBFU3DRVjXxuLd1b2iBzz2v4tzztygcQ5Q0&_nc_ht=scontent.fhan2-1.fna&oh=7c4c24fbe029523986fe42ec557f70bc&oe=5D0A07F1" alt="Hiếu" style="width:100%" height="">
-      <h3>Nguyễn Minh Hiếu</h3>
-      <p class="w3-opacity">Fontend dev</p>
-      <p>Phụ trách fontend của trang web</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l2 m6 w3-margin-bottom">
-      <img src="https://scontent.fhan3-2.fna.fbcdn.net/v/t1.15752-9/56635143_476395649561752_5593101782323560448_n.jpg?_nc_cat=107&_nc_oc=AQl4C2W1HSJ9l2kaTu1_BxSEUjDv39lqnyj-bX-dYAZ8Vp7LYI5EYbssE0DZJKIpypY&_nc_ht=scontent.fhan3-2.fna&oh=c523ef2941571288396a42688b2fc751&oe=5D4B790C&dl=1" alt="Ánh" style="width:100%" height="">
-      <h3>Nguyễn Thị Nhật Ánh</h3>
-      <p class="w3-opacity">Fontend dev</p>
-      <p>Phụ trách fontend của trang web</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-  </div>
-
-  <!-- Contact Section -->
-  
-  
-<!-- Image of location/map -->
-<div class="w3-container">
-  <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
-</div>
-
-<!-- End page content -->
-</div>
-<br>
-<br>
-<br>
-<br>
-
-<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large"> 
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p>Powered by <a href="h###" target="_blank" class="w3-hover-text-green">Team kut3_pro_no1 <3</a></p>
-</footer>
-
-
-  
-   
-  <script>
-    $(document).ready(function(){
-      var clipboard = new Clipboard('.copy-link');
-      clipboard.on('success', function (e) {
-        console.log(e);
-      });
-      clipboard.on('error', function (e) {
-        console.log(e);
-      });
-
-      $(".copy-link").click(function (e) {
-        e.preventDefault();
-        var btnHref = $(this).attr('href')
-        var item = $(this)
-        item.text("Copied!")
-        item.removeClass('btn-primary')
-        item.addClass('btn-success')
-
-        setTimeout(function () {
+          setTimeout(function () {
           item.text("Copy")
           item.removeClass('btn-success')
           item.addClass('btn-primary')
-        }, 2500)
-      });
-    });
-  </script>
+          }, 2500)
+          });
+          });
+          </script>
 </body>
 
 </html>
